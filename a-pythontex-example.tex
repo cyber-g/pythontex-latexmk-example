@@ -1,0 +1,53 @@
+\documentclass[12pt,french]{article}
+\usepackage[a3paper]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc} 
+\usepackage{lmodern}
+\usepackage{babel}
+\usepackage{pythontex}
+\setlength{\parindent}{0pt}
+
+\begin{document}
+
+Works on Ubuntu 20.04. \\
+
+Résultat : 
+
+\begin{sympycode}
+theta = Symbol (r'\theta')
+p = 1/(sqrt(2*pi))*Integral(exp(-theta**2/2),(theta,-oo,oo))
+\end{sympycode}
+\begin{equation}
+    \sympy{p}=\sympy{p.doit()}
+\end{equation}
+
+\begin{sympycode}
+omega1 = Symbol (r'\omega_1')
+omega2 = Symbol (r'\omega_2')
+t = Symbol('t')
+Phi1 = Symbol (r'\Phi_1')
+Phi2 = Symbol (r'\Phi_2')
+rfdualtone = cos(omega1*t+Phi1)+cos(omega2*t+Phi2)
+\end{sympycode}
+\begin{equation}
+    \sympy{rfdualtone}=\sympy{rfdualtone.doit()}
+\end{equation}
+
+\begin{sympycode}
+omegarf = Symbol (r'\omega_{rf}')
+deltaomega = Symbol (r'\Delta\omega')
+rfdualtonetwo = fu(cos((omegarf+deltaomega)*t+Phi1)+cos((omegarf-deltaomega)*t+Phi2))
+\end{sympycode}
+\begin{equation}
+    \sympy{rfdualtonetwo}=\sympy{rfdualtonetwo.doit()}
+\end{equation}
+    
+\begin{sympycode}
+from sympy.simplify.fu import *
+from sympy.abc import x
+\end{sympycode}
+\begin{equation}
+    \sympy{TR10i(cos(1)*cos(3) + sin(1)*sin(3))}
+\end{equation}
+
+\end{document}
